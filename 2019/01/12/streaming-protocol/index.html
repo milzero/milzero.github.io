@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="常见流媒体协议">
+
+
+
+
+  <meta name="keywords" content="流媒体,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/01/12/streaming-protocol/">
+
+
+<meta name="description" content="在说流媒体协议之前，首先什么是流媒体？ 流媒体的关键在于“流(streaming)”。最粗浅的解释：通过网络把经过压缩处理的媒体传输给到对端。这里的媒体最常见的就是音频和视频。 目前最广为认知，最流行的协议就是下面四种：RTP ，RTMP，HLS，DASH。RTP协议应用于实时通话，在线教育，监控等领域。RTMP应用于监控，直播领域。HLS和DASH对于现代浏览器直播的支持。 RTP协议标准最初由">
+<meta name="keywords" content="流媒体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见流媒体协议">
+<meta property="og:url" content="http://yoursite.com/2019/01/12/streaming-protocol/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在说流媒体协议之前，首先什么是流媒体？ 流媒体的关键在于“流(streaming)”。最粗浅的解释：通过网络把经过压缩处理的媒体传输给到对端。这里的媒体最常见的就是音频和视频。 目前最广为认知，最流行的协议就是下面四种：RTP ，RTMP，HLS，DASH。RTP协议应用于实时通话，在线教育，监控等领域。RTMP应用于监控，直播领域。HLS和DASH对于现代浏览器直播的支持。 RTP协议标准最初由">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-01T09:25:39.570Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见流媒体协议">
+<meta name="twitter:description" content="在说流媒体协议之前，首先什么是流媒体？ 流媒体的关键在于“流(streaming)”。最粗浅的解释：通过网络把经过压缩处理的媒体传输给到对端。这里的媒体最常见的就是音频和视频。 目前最广为认知，最流行的协议就是下面四种：RTP ，RTMP，HLS，DASH。RTP协议应用于实时通话，在线教育，监控等领域。RTMP应用于监控，直播领域。HLS和DASH对于现代浏览器直播的支持。 RTP协议标准最初由">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 常见流媒体协议 - Hexo </title>
+  <link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          常见流媒体协议
+        
+      </h1>
+
+      <time class="post-time">
+          Jan 12 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在说流媒体协议之前，首先什么是流媒体？</p>
+<p>流媒体的关键在于<strong>“流(streaming)”</strong>。最粗浅的解释：通过网络把经过压缩处理的媒体传输给到对端。这里的媒体最常见的就是音频和视频。</p>
+<p>目前最广为认知，最流行的协议就是下面四种：RTP ，RTMP，HLS，DASH。RTP协议应用于实时通话，在线教育，监控等领域。RTMP应用于监控，直播领域。HLS和DASH对于现代浏览器直播的支持。</p>
+<p>RTP协议标准最初由 IETF 在1998年公布，RTP应该是最早的流媒体传输协议。RTP协议通常和RTSP，RTCP，SDP协议配合使用。RTSP作为信令控制，RTCP控制媒体通道，RTP媒体传输。</p>
+<p>RTMP实时消息协议（Real-Time Messaging Protocol）也称实时消息传输协议，最初由Macromedia用来播放FLASH，Macromedia被Adobe收购后，Adobe分别公布了RTMP，</p>
+<p>HLS（HTTP Living Streaming）Apple提出的流媒体协议，基于HTTP的流媒体协议。HLS基于HTTP协议，可以充分利用HTTP的优点，例如防火墙穿透等，当然也有基于HTTP劣势（相较于RTP和RTMP）例如更大的包头，更大的延迟。</p>
+<p>DASH是这几种协议中最年轻的，DASH 在2012年由MPEG提出第一个版本，DASH和HLS一样都是基于HTTP协议，利用HTTP协议传输媒体片段。DASH和HLS 的负载类型为mp4 ， 而HLS为ts流。</p>
+<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p>应用场景，携带的媒体类型，典型的延迟大小等，比较一下这几种协议。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RTP</th>
+<th>RTMP</th>
+<th>HLS</th>
+<th>DASH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>底层协议</td>
+<td>TCP&amp;UDP</td>
+<td>TCP</td>
+<td>HTTP</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>典型延迟</td>
+<td>毫秒级别</td>
+<td>1~3s</td>
+<td>10s</td>
+<td>10s</td>
+</tr>
+<tr>
+<td>负载类型</td>
+<td>原始媒体数据：<br>H264/H265 , VP8/VP9 , AAC,OPUS等</td>
+<td>FLV</td>
+<td>TS</td>
+<td>Fmp4</td>
+</tr>
+<tr>
+<td>典型场景</td>
+<td>视频通话，点播</td>
+<td>直播，点播</td>
+<td>直播，点播</td>
+<td>直播，点播</td>
+</tr>
+</tbody></table>
+<p>RTP既可以基于UDP和TCP协议，大多数情况基于UDP，所以当我们讨论RTP的时候默认是在说基于UDP的RTP。 也å不是说所有的基于RTP协议的系统就是基于UDP的，有些监控系统的使用的就是TCP,例如EasyDrawin。RTMP官方实现是基于TCP的。但是Adobe已经宣布，将在2020停止对FLV支持，但是FLV在国内还是异常的流行和坚强，变化出了很多变种，列入基于HTTP或者是Quic.</p>
+<p>RTP协议通常的延迟能达到毫秒级别。RTMP的延迟通常在2~3s之间，也有号称做到1s左右的延迟，但是这些都极大的依赖于网络状况。RTP和RTMP在延迟上的差距其实来之UDP和TCP的差别。最后基于HTTP的HLS，DASH延迟通常都在10s级别了。</p>
+<p>RTP携带的负载类型都是音视频目前支持现在存在的绝大多数媒体类型，但是rtp标准文档的速度远远的低于编码格式推出的速度。RTMP里面带的是FLV，需要注意的是，Adobe不会在维护FLV了，所以flv不会在支持一些新的编码格式，例如vp8，opus，h265.而HLS携带的负载类型TS(MPEG2-TS)，是一种日常不太常见的媒体封装格式，之前主要是使用在广播电视系统。DASH和HLS的差别很大一部分是体系在负载类型上的，DASH携带的是FMP4，FMP4可以理解为一种特殊化的MP4格式，每一个fmp4切片都携带了单独播放的所有元素。如果裸流到对于的协议，复杂度：rtp&lt;rtmp&lt;HLS=FMP4.</p>
+<p>应用场景的差别主要是因为每种协议对实时性的支持不太和基础设施决定的，一般的实时通话，例如视频通话，视频会议和在线的一对一教学对实时性要求很高，超过500ms延迟已经能明显的感觉到延迟了，所以一般我们选择RTP协议。RTMP协议延迟稍高RTP，也有是RTMP来做视频会议系统的，但是基于TCP的RTMP对于抗弱网没那么合适。但是对于直播系统，对延迟没那么高，但是延迟越低，体验越好，那就很适合RTMP协议，而且flv可以直接在网页播放，对于直播系统在合适不过了。hls的出现是因为很多端是不支持flash的(Apple),HLS的出现填补了这个空缺。dash正好是延迟比HLS滴，但是终端的适配性比flv。另外现在的CDN对于flv，hls支持较多，dash也越来越流行了。</p>
+<p>浏览器支持。没有浏览器支持标准的RTP协议，当然webrtc的出现也使得在Webrtc实时通话成为可能。大多数的PC端浏览器都支持rtmp，但是随着flv的停止支持，浏览器对于flv的支持可能停止。而hls，dash有第三方的播放器支持。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/流媒体/">流媒体</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/07/31/streaming/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default"></span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

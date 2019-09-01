@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-31T15:37:40.500Z</updated>
+  <updated>2019-09-01T09:16:50.474Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>streaming</title>
+    <title></title>
     <link href="http://yoursite.com/2019/07/31/streaming/"/>
     <id>http://yoursite.com/2019/07/31/streaming/</id>
-    <published>2019-07-31T15:35:36.000Z</published>
-    <updated>2019-07-31T15:37:40.500Z</updated>
+    <published>2019-07-31T15:35:36.159Z</published>
+    <updated>2019-09-01T09:16:50.474Z</updated>
     
     <summary type="html">
     
@@ -29,14 +29,36 @@
       
         
         
-          &lt;h1 id=&quot;常见流媒体协议&quot;&gt;&lt;a href=&quot;#常见流媒体协议&quot; class=&quot;headerlink&quot; title=&quot;常见流媒体协议&quot;&gt;&lt;/a&gt;常见流媒体协议&lt;/h1&gt;&lt;p&gt;我们在说流媒体协议之前，首先得知道什么是流媒体。&lt;/p&gt;
-&lt;h2 id=&quot;RTP协议&quot;&gt;&lt;a
+          &lt;p&gt;视频格式：&lt;/p&gt;
+&lt;h2 id=&quot;FLV&quot;&gt;&lt;a href=&quot;#FLV&quot; class=&quot;headerlink&quot; title=&quot;FLV&quot;&gt;&lt;/a&gt;FLV&lt;/h2&gt;&lt;h2 id=&quot;TS&quot;&gt;&lt;a href=&quot;#TS&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="流媒体" scheme="http://yoursite.com/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见流媒体协议</title>
+    <link href="http://yoursite.com/2019/01/12/streaming-protocol/"/>
+    <id>http://yoursite.com/2019/01/12/streaming-protocol/</id>
+    <published>2019-01-12T09:21:10.000Z</published>
+    <updated>2019-09-01T09:25:39.570Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在说流媒体协议之前，首先什么是流媒体？&lt;/p&gt;
+&lt;p&gt;流媒体的关键在于&lt;strong&gt;“流(streaming)”&lt;/strong&gt;。最粗浅的解释：通过网络把经过压缩处理的媒体传输给到对端。这里的媒体最常见的就是音频和视频。&lt;/p&gt;
+&lt;p&gt;目前最广为认知，最流行的协议就是下
+        
+      
+    
+    </summary>
     
     
       <category term="流媒体" scheme="http://yoursite.com/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
