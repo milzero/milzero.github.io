@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-01T09:16:50.474Z</updated>
+  <updated>2019-09-01T15:27:41.038Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/07/31/streaming/"/>
     <id>http://yoursite.com/2019/07/31/streaming/</id>
     <published>2019-07-31T15:35:36.159Z</published>
-    <updated>2019-09-01T09:16:50.474Z</updated>
+    <updated>2019-09-01T15:27:41.038Z</updated>
     
     <summary type="html">
     
@@ -36,6 +36,41 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>RFC3550中的Qos参数计算</title>
+    <link href="http://yoursite.com/2019/07/29/rfc3550-rtcp/"/>
+    <id>http://yoursite.com/2019/07/29/rfc3550-rtcp/</id>
+    <published>2019-07-29T09:37:02.000Z</published>
+    <updated>2019-09-07T06:47:02.074Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;RTP延时，丢包和抖动计算&lt;/p&gt;
+&lt;h2 id=&quot;延时RTT计算&quot;&gt;&lt;a href=&quot;#延时RTT计算&quot; class=&quot;headerlink&quot; title=&quot;延时RTT计算&quot;&gt;&lt;/a&gt;延时RTT计算&lt;/h2&gt;&lt;p&gt;计算步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sender
+        
+      
+    
+    </summary>
+    
+      <category term="流媒体" scheme="http://yoursite.com/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+    
+      <category term="RTCP" scheme="http://yoursite.com/tags/RTCP/"/>
+    
+      <category term="RTP" scheme="http://yoursite.com/tags/RTP/"/>
+    
+      <category term="流媒体" scheme="http://yoursite.com/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+      <category term="WebRTC" scheme="http://yoursite.com/tags/WebRTC/"/>
     
   </entry>
   

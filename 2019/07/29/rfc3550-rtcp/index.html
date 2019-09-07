@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="RFC3550中的Qos参数计算">
+
+
+
+
+  <meta name="keywords" content="RTCP,RTP,流媒体,WebRTC,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/07/29/rfc3550-rtcp/">
+
+
+<meta name="description" content="RTP延时，丢包和抖动计算 延时RTT计算计算步骤:  Sender 端发送SR，记录当前NTP时间在SR中。 Receiver记录上一个SR中的NTP时间，为LSR。 记Receiver接收上一个SR到RR发送的时间DLSR Sender收到RR的时间记为T。  RTT = T- DLSR - LSR 需要注意的是，SR和RR通常不是一一对应的关系。 丢包计算 expected: 间隔内最大的S">
+<meta name="keywords" content="RTCP,RTP,流媒体,WebRTC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RFC3550中的Qos参数计算">
+<meta property="og:url" content="http://yoursite.com/2019/07/29/rfc3550-rtcp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RTP延时，丢包和抖动计算 延时RTT计算计算步骤:  Sender 端发送SR，记录当前NTP时间在SR中。 Receiver记录上一个SR中的NTP时间，为LSR。 记Receiver接收上一个SR到RR发送的时间DLSR Sender收到RR的时间记为T。  RTT = T- DLSR - LSR 需要注意的是，SR和RR通常不是一一对应的关系。 丢包计算 expected: 间隔内最大的S">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-07T06:47:02.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RFC3550中的Qos参数计算">
+<meta name="twitter:description" content="RTP延时，丢包和抖动计算 延时RTT计算计算步骤:  Sender 端发送SR，记录当前NTP时间在SR中。 Receiver记录上一个SR中的NTP时间，为LSR。 记Receiver接收上一个SR到RR发送的时间DLSR Sender收到RR的时间记为T。  RTT = T- DLSR - LSR 需要注意的是，SR和RR通常不是一一对应的关系。 丢包计算 expected: 间隔内最大的S">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> RFC3550中的Qos参数计算 - Hexo </title>
+  <link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          RFC3550中的Qos参数计算
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 29 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>RTP延时，丢包和抖动计算</p>
+<h2 id="延时RTT计算"><a href="#延时RTT计算" class="headerlink" title="延时RTT计算"></a>延时RTT计算</h2><p>计算步骤:</p>
+<ol>
+<li>Sender 端发送SR，记录当前NTP时间在SR中。</li>
+<li>Receiver记录上一个SR中的NTP时间，为LSR。</li>
+<li>记Receiver接收上一个SR到RR发送的时间DLSR</li>
+<li>Sender收到RR的时间记为T。</li>
+</ol>
+<p>RTT = T- DLSR - LSR</p>
+<p>需要注意的是，SR和RR通常不是一一对应的关系。</p>
+<h2 id="丢包计算"><a href="#丢包计算" class="headerlink" title="丢包计算"></a>丢包计算</h2><ul>
+<li><p>expected: 间隔内最大的SN - 最小SN</p>
+</li>
+<li><p>received： 间隔内收到的所有包数，包括前一个间隔晚到的包，重传的包都算。因此，expected 有可能小于received。</p>
+<p>​                        Loss = received / expected</p>
+</li>
+</ul>
+<h2 id="抖动计算"><a href="#抖动计算" class="headerlink" title="抖动计算"></a>抖动计算</h2><p>设接收到两个rtp包的时间间隔，换算成以sample为单位。(Rj - Ri)</p>
+<p>两个rtp包中rtp时间戳间隔为：(Sj - Si)</p>
+<p>则该次jitter为D(i,j) = (Rj - Ri) - (Sj - Si)</p>
+<p>总的jitter值取平均，计算公式为：J(i) = J(i-1) + (|D(i-1,i)| - J(i-1))/16</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/RTCP/">RTCP</a>
+		  
+			<a href="/tags/RTP/">RTP</a>
+		  
+			<a href="/tags/流媒体/">流媒体</a>
+		  
+			<a href="/tags/WebRTC/">WebRTC</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/07/31/streaming/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default"></span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/01/12/streaming-protocol/">
+        <span class="next-text nav-default">常见流媒体协议</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
