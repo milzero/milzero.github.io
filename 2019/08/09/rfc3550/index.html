@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="RFC3550中RTCP">
+
+
+
+
+  <meta name="keywords" content="RTCP,RTP,流媒体,WebRTC,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/08/09/rfc3550/">
+
+
+<meta name="description" content="在RTP协议族中，RTP传输数据，RTCP统计数据媒体控制。这篇主要内容包括：主要的RTCP信令的作用和组包。 RTCP Header123450                   1                   2                   3        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9">
+<meta name="keywords" content="RTCP,RTP,流媒体,WebRTC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RFC3550中RTCP">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/rfc3550/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在RTP协议族中，RTP传输数据，RTCP统计数据媒体控制。这篇主要内容包括：主要的RTCP信令的作用和组包。 RTCP Header123450                   1                   2                   3        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-27T10:37:38.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RFC3550中RTCP">
+<meta name="twitter:description" content="在RTP协议族中，RTP传输数据，RTCP统计数据媒体控制。这篇主要内容包括：主要的RTCP信令的作用和组包。 RTCP Header123450                   1                   2                   3        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> RFC3550中RTCP - Hexo </title>
+  <link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          RFC3550中RTCP
+        
+      </h1>
+
+      <time class="post-time">
+          Aug 09 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在RTP协议族中，RTP传输数据，RTCP统计数据媒体控制。这篇主要内容包括：主要的RTCP信令的作用和组包。</p>
+<h2 id="RTCP-Header"><a href="#RTCP-Header" class="headerlink" title="RTCP Header"></a>RTCP Header</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0                   1                   2                   3</span><br><span class="line">        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">header |V=2|P|    RC   |   PT=SR=200   |             length            |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>V:版本2bit,固定为2</p>
+<p>P:padding，当p是1是，表示包体的最后会有一端数据</p>
+<p>RC or subtype：不同的PT这个字段的意义不一样</p>
+<p>PT:8bit，标识RTCP报文类型</p>
+<p>Length: 16bit,报文长度</p>
+<p>解析RTCP/RTP的的时候，PT可以用来区分一个包是RTCP还是RTP，当PT不是已知的一种RTCP类型，那么就是RTP。</p>
+<h2 id="RTCP类型列表"><a href="#RTCP类型列表" class="headerlink" title="RTCP类型列表"></a>RTCP类型列表</h2><table>
+<thead>
+<tr>
+<th>type</th>
+<th>Description</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192</td>
+<td>FIR, full INTRA-frame request.</td>
+<td><a href="https://tools.ietf.org/html/rfc2032" target="_blank" rel="noopener">RFC 2032</a></td>
+</tr>
+<tr>
+<td>193</td>
+<td>NACK, negative acknowledgement.</td>
+<td><a href="https://tools.ietf.org/html/rfc2032" target="_blank" rel="noopener">RFC 2032</a></td>
+</tr>
+<tr>
+<td>194</td>
+<td>SMPTETC, SMPTE time-code mapping.</td>
+<td>RFC5484</td>
+</tr>
+<tr>
+<td>195</td>
+<td>IJ, extended inter-arrival jitter report.</td>
+<td><a href="https://tools.ietf.org/html/rfc3550" target="_blank" rel="noopener">RFC 5450</a></td>
+</tr>
+<tr>
+<td>200</td>
+<td>SR, sender report.</td>
+<td><a href="https://tools.ietf.org/html/rfc3550" target="_blank" rel="noopener">RFC 3550</a></td>
+</tr>
+<tr>
+<td>201</td>
+<td>RR, receiver report.</td>
+<td><a href="https://tools.ietf.org/html/rfc3550" target="_blank" rel="noopener">RFC 3550</a></td>
+</tr>
+<tr>
+<td>202</td>
+<td>SDES, source description.</td>
+<td><a href="https://tools.ietf.org/html/rfc3550#page-45" target="_blank" rel="noopener">RFC 3550</a></td>
+</tr>
+<tr>
+<td>203</td>
+<td>BYE, goodbye.</td>
+<td><a href="https://tools.ietf.org/html/rfc3550" target="_blank" rel="noopener">RFC 3550</a></td>
+</tr>
+<tr>
+<td>204</td>
+<td>APP, application defined.</td>
+<td><a href="https://tools.ietf.org/html/rfc3550" target="_blank" rel="noopener">RFC 3550</a></td>
+</tr>
+<tr>
+<td>205</td>
+<td>RTPFB, Generic RTP Feedback.</td>
+<td></td>
+</tr>
+<tr>
+<td>206</td>
+<td>PSFB, Payload-specific.</td>
+<td></td>
+</tr>
+<tr>
+<td>207</td>
+<td>XR, RTCP extension.</td>
+<td><a href="https://tools.ietf.org/html/rfc3611" target="_blank" rel="noopener">RFC 3611</a></td>
+</tr>
+<tr>
+<td>208</td>
+<td>AVB, AVB RTCP packet.</td>
+<td>IEEE 1733</td>
+</tr>
+<tr>
+<td>209</td>
+<td>RSI, Receiver Summary Information.</td>
+<td>RFC 5760</td>
+</tr>
+</tbody></table>
+<h2 id="SR-Sender-Report-发送者报告"><a href="#SR-Sender-Report-发送者报告" class="headerlink" title="SR: Sender Report  发送者报告"></a>SR: Sender Report  发送者报告</h2><p>发送者报告，用来计算丢包，抖动，延时质量参数和媒体通道同步。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">				0                   1                   2                   3</span><br><span class="line">        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">header |V=2|P|    RC   |   PT=SR=200   |             length            |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                         SSRC of sender                        |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">sender |              NTP timestamp, most significant word             |</span><br><span class="line">info   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |             NTP timestamp, least significant word             |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                         RTP timestamp                         |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                     sender&apos;s packet count                     |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                      sender&apos;s octet count                     |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">report |                 SSRC_1 (SSRC of first source)                 |</span><br><span class="line">block  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  1    | fraction lost |       cumulative number of packets lost       |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |           extended highest sequence number received           |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                      interarrival jitter                      |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                         last SR (LSR)                         |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                   delay since last SR (DLSR)                  |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">report |                 SSRC_2 (SSRC of second source)                |</span><br><span class="line">block  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  2    :                               ...                             :</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">       |                  profile-specific extensions                  |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>SR分为三部分：8字节的SR头部，20字节的发送者信息，每个24字节的RR报告。</p>
+<p>SR头部包含4字节的RTCP头和4字节的发送者SSRC。</p>
+<p>发送者信息，发送者信息是SR最总要的内容，里面包含用于计算网络质量，媒体同步的内容。这里面是RTP协议设计最精巧的部分。</p>
+<p>NTP时间戳:8字节，前面4字节标识NTP时间的整数部分，后面4字节标识NTP时间的小数部分，单位是200皮秒。</p>
+<p>RTP时间戳:4字节和对应的RTP有对应的偏移量和时间单位,配合上面的NTP时间戳，可以计算出每个RTP包的绝对时间。</p>
+<p>sender’s packet count:  SSRC对应的媒体流发送的包的总数。</p>
+<p> sender’s octet count ：SSRC对应的媒体流发送的字节总数。</p>
+<p>第三个部分，标识接受者的发送的RR包，RR包的在这里会有解释。</p>
+<h2 id="RR-Receiver-Report-接收者报告"><a href="#RR-Receiver-Report-接收者报告" class="headerlink" title="RR: Receiver Report   接收者报告"></a>RR: Receiver Report   接收者报告</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">        0                   1                   2                   3</span><br><span class="line">        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">header |V=2|P|    RC   |   PT=RR=201   |             length            |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                     SSRC of packet sender                     |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">report |                 SSRC_1 (SSRC of first source)                 |</span><br><span class="line">block  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  1    | fraction lost |       cumulative number of packets lost       |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |           extended highest sequence number received           |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                      interarrival jitter                      |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                         last SR (LSR)                         |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                   delay since last SR (DLSR)                  |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">report |                 SSRC_2 (SSRC of second source)                |</span><br><span class="line">block  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  2    :                               ...                             :</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">       |                  profile-specific extensions                  |</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>RR分为两个部分，第一部分RR头，第二部部分标识实际的接收者报告</p>
+<p>RR头部和SR一致，出了PT为201。</p>
+<p>第二部分：</p>
+<p>SSRC : rtp发送者的SSRC</p>
+<p>fraction lost：丢包率，从上一次发送RR到这次RR之间的丢包率</p>
+<p>cumulative number of packets lost：累计丢包数</p>
+<p>extended highest sequence number received :前16bits表示当前收到的最大序列号，后16bit标识序列号的翻转次数。</p>
+<p>interarrival jitter：网络抖动</p>
+<p>last SR (LSR) ：上次收到SR的NTP时间中间的32bit</p>
+<p>delay since last SR (DLSR)：上次收到SR，到这次RR包经过的时间，单位为1/65535秒。</p>
+<p>LSR和DLSR用来计算sender到接收者之间的RTT。</p>
+<h2 id="SDES-Source-Description-源描述"><a href="#SDES-Source-Description-源描述" class="headerlink" title="SDES: Source Description 源描述"></a><a href="https://tools.ietf.org/html/rfc3550#page-45" target="_blank" rel="noopener">SDES: Source Description 源描述</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">0                   1                   2                   3</span><br><span class="line">        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">header |V=2|P|    SC   |  PT=SDES=202  |             length            |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">chunk  |                          SSRC/CSRC_1                          |</span><br><span class="line">  1    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                           SDES items                          |</span><br><span class="line">       |                              ...                              |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">chunk  |                          SSRC/CSRC_2                          |</span><br><span class="line">  2    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">       |                           SDES items                          |</span><br><span class="line">       |                              ...                              |</span><br><span class="line">       +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br></pre></td></tr></table></figure>
+
+<p>源描述包用来描述发送发送必要描述源。</p>
+<p>PT类型202.</p>
+<p>4bytes 被描述的SSRC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0                   1                   2                   3</span><br><span class="line">  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line"> +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line"> |    CNAME=1    |     length    | user and domain name        ...</span><br><span class="line"> +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>8bit的描述字段名称，8bit的描述内容长度，字段内容。</p>
+<h2 id="BYE-Goodbye"><a href="#BYE-Goodbye" class="headerlink" title="BYE: Goodbye"></a>BYE: Goodbye</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">			0                   1                   2                   3</span><br><span class="line">       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">      |V=2|P|    SC   |   PT=BYE=203  |             length            |</span><br><span class="line">      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">      |                           SSRC/CSRC                           |</span><br><span class="line">      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">      :                              ...                              :</span><br><span class="line">      +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">(opt) |     length    |               reason for leaving            ...</span><br><span class="line">      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>Goodbbye包，PT类型203.</p>
+<p>混流时使用</p>
+<h2 id="APP-Application-Defined"><a href="#APP-Application-Defined" class="headerlink" title="APP: Application-Defined"></a>APP: Application-Defined</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">0                   1                   2                   3</span><br><span class="line">   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  |V=2|P| subtype |   PT=APP=204  |             length            |</span><br><span class="line">  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  |                           SSRC/CSRC                           |</span><br><span class="line">  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  |                          name (ASCII)                         |</span><br><span class="line">  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">  |                   application-dependent data                ...</span><br><span class="line">  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>APP数据包旨在用作新应用程序的实验用途    开发了新功能，无需数据包类型值    注册。应该忽略具有无法识别名称的APP数据包。    经过测试，如果更广泛的使用是合理的，那么推荐这样做    重新定义每个APP数据包，不带子类型和名称字段    使用RTCP数据包类型在IANA注册。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/RTCP/">RTCP</a>
+		  
+			<a href="/tags/RTP/">RTP</a>
+		  
+			<a href="/tags/流媒体/">流媒体</a>
+		  
+			<a href="/tags/WebRTC/">WebRTC</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/07/29/rfc3550-rtcp/">
+        <span class="next-text nav-default">RFC3550中的Qos参数计算</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

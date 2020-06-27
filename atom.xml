@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-01T15:27:41.038Z</updated>
+  <updated>2020-06-27T10:37:38.068Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/07/31/streaming/"/>
-    <id>http://yoursite.com/2019/07/31/streaming/</id>
-    <published>2019-07-31T15:35:36.159Z</published>
-    <updated>2019-09-01T15:27:41.038Z</updated>
+    <title>RFC3550中RTCP</title>
+    <link href="http://yoursite.com/2019/08/09/rfc3550/"/>
+    <id>http://yoursite.com/2019/08/09/rfc3550/</id>
+    <published>2019-08-09T12:37:02.000Z</published>
+    <updated>2020-06-27T10:37:38.068Z</updated>
     
     <summary type="html">
     
@@ -29,13 +29,23 @@
       
         
         
-          &lt;p&gt;视频格式：&lt;/p&gt;
-&lt;h2 id=&quot;FLV&quot;&gt;&lt;a href=&quot;#FLV&quot; class=&quot;headerlink&quot; title=&quot;FLV&quot;&gt;&lt;/a&gt;FLV&lt;/h2&gt;&lt;h2 id=&quot;TS&quot;&gt;&lt;a href=&quot;#TS&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;在RTP协议族中，RTP传输数据，RTCP统计数据媒体控制。这篇主要内容包括：主要的RTCP信令的作用和组包。&lt;/p&gt;
+&lt;h2 id=&quot;RTCP-Header&quot;&gt;&lt;a href=&quot;#RTCP-Header&quot; class=&quot;headerlink&quot; title=&quot;RTCP
         
       
     
     </summary>
     
+      <category term="流媒体" scheme="http://yoursite.com/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+    
+      <category term="RTCP" scheme="http://yoursite.com/tags/RTCP/"/>
+    
+      <category term="RTP" scheme="http://yoursite.com/tags/RTP/"/>
+    
+      <category term="流媒体" scheme="http://yoursite.com/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+      <category term="WebRTC" scheme="http://yoursite.com/tags/WebRTC/"/>
     
   </entry>
   
