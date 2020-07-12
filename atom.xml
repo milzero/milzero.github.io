@@ -89,7 +89,7 @@
     <link href="http://yoursite.com/2019/01/12/streaming-protocol/"/>
     <id>http://yoursite.com/2019/01/12/streaming-protocol/</id>
     <published>2019-01-12T09:21:10.000Z</published>
-    <updated>2019-09-01T09:25:39.570Z</updated>
+    <updated>2020-07-12T12:52:46.822Z</updated>
     
     <summary type="html">
     
@@ -97,9 +97,7 @@
       
         
         
-          &lt;p&gt;在说流媒体协议之前，首先什么是流媒体？&lt;/p&gt;
-&lt;p&gt;流媒体的关键在于&lt;strong&gt;“流(streaming)”&lt;/strong&gt;。最粗浅的解释：通过网络把经过压缩处理的媒体传输给到对端。这里的媒体最常见的就是音频和视频。&lt;/p&gt;
-&lt;p&gt;目前最广为认知，最流行的协议就是下
+          &lt;p&gt;在说流媒体协议之前，首先什么是流媒体？Driving Technical
         
       
     
@@ -107,6 +105,62 @@
     
     
       <category term="流媒体" scheme="http://yoursite.com/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>布道之道读书笔记</title>
+    <link href="http://yoursite.com/2019/01/12/driving-technical-change/"/>
+    <id>http://yoursite.com/2019/01/12/driving-technical-change/</id>
+    <published>2019-01-12T09:21:10.000Z</published>
+    <updated>2020-07-12T13:57:02.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我们在工作中总会遇到在团队内外推广新技术，或者新功能收到质疑(其实这个是必然发生的事情)，或者技术选型时，面对两个各方面都差不多的技术，不知道怎么让其他人接受自己心仪的那个。这本书就是解决这个问题。作者没有单纯的从技术的角度去说如何技术布道，更从管理，甚至心理学的角度去教大
+        
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="布道之道" scheme="http://yoursite.com/tags/%E5%B8%83%E9%81%93%E4%B9%8B%E9%81%93/"/>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ddia阅读笔记</title>
+    <link href="http://yoursite.com/2018/12/09/ddia/"/>
+    <id>http://yoursite.com/2018/12/09/ddia/</id>
+    <published>2018-12-09T03:37:02.000Z</published>
+    <updated>2020-07-12T12:50:21.765Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://milzero.github.io/images/ddia.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="分布式系统" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
