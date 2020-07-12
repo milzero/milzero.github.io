@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="ddia阅读笔记">
+  <meta name="description" content="WebRTC 中的Nack">
 
 
 
@@ -38,14 +38,14 @@
 <meta name="description" content="Nack , 即丢包重传，在RTT小的情况下，是非常有效的错误恢复手段。接收端根据接收到包的序列号判断当前是否有丢包，若接收到的最新包和上次收到的新包得序列号不连续则可以断定丢包或者乱序，当新收到的包序号大于保存的最新的包，则可以判断为丢包，当小于，则可以判断为乱序号，或者重复。当然者里面要注意序列号翻转。一般接收端会维护一个列表，用于记录收到的包的序列号，一半这个列表的长度是一个GOP，因为即使">
 <meta name="keywords" content="流媒体,webrtc,rtp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ddia阅读笔记">
+<meta property="og:title" content="WebRTC 中的Nack">
 <meta property="og:url" content="http://yoursite.com/2020/02/09/webrtc-nack/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Nack , 即丢包重传，在RTT小的情况下，是非常有效的错误恢复手段。接收端根据接收到包的序列号判断当前是否有丢包，若接收到的最新包和上次收到的新包得序列号不连续则可以断定丢包或者乱序，当新收到的包序号大于保存的最新的包，则可以判断为丢包，当小于，则可以判断为乱序号，或者重复。当然者里面要注意序列号翻转。一般接收端会维护一个列表，用于记录收到的包的序列号，一半这个列表的长度是一个GOP，因为即使">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T15:33:33.814Z">
+<meta property="og:updated_time" content="2020-07-12T15:36:44.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ddia阅读笔记">
+<meta name="twitter:title" content="WebRTC 中的Nack">
 <meta name="twitter:description" content="Nack , 即丢包重传，在RTT小的情况下，是非常有效的错误恢复手段。接收端根据接收到包的序列号判断当前是否有丢包，若接收到的最新包和上次收到的新包得序列号不连续则可以断定丢包或者乱序，当新收到的包序号大于保存的最新的包，则可以判断为丢包，当小于，则可以判断为乱序号，或者重复。当然者里面要注意序列号翻转。一般接收端会维护一个列表，用于记录收到的包的序列号，一半这个列表的长度是一个GOP，因为即使">
 
 
@@ -71,7 +71,7 @@
 
 
 
-    <title> ddia阅读笔记 - Hexo </title>
+    <title> WebRTC 中的Nack - Hexo </title>
   <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -118,7 +118,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          ddia阅读笔记
+          WebRTC 中的Nack
         
       </h1>
 
