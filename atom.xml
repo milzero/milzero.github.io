@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-27T10:37:38.068Z</updated>
+  <updated>2020-07-12T14:10:43.706Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>布道之道读书笔记</title>
+    <link href="http://yoursite.com/2020/07/09/driving-technical-change/"/>
+    <id>http://yoursite.com/2020/07/09/driving-technical-change/</id>
+    <published>2020-07-09T14:21:10.000Z</published>
+    <updated>2020-07-12T14:10:43.706Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我们在工作中总会遇到在团队内外推广新技术，或者新功能收到质疑(其实这个是必然发生的事情)，或者技术选型时，面对两个各方面都差不多的技术，不知道怎么让其他人接受自己心仪的那个。这本书就是解决这个问题。作者没有单纯的从技术的角度去说如何技术布道，更从管理，甚至心理学的角度去教大
+        
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="布道之道" scheme="http://yoursite.com/tags/%E5%B8%83%E9%81%93%E4%B9%8B%E9%81%93/"/>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>RFC3550中RTCP</title>
@@ -105,34 +133,6 @@
     
     
       <category term="流媒体" scheme="http://yoursite.com/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>布道之道读书笔记</title>
-    <link href="http://yoursite.com/2019/01/12/driving-technical-change/"/>
-    <id>http://yoursite.com/2019/01/12/driving-technical-change/</id>
-    <published>2019-01-12T09:21:10.000Z</published>
-    <updated>2020-07-12T13:57:02.129Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;我们在工作中总会遇到在团队内外推广新技术，或者新功能收到质疑(其实这个是必然发生的事情)，或者技术选型时，面对两个各方面都差不多的技术，不知道怎么让其他人接受自己心仪的那个。这本书就是解决这个问题。作者没有单纯的从技术的角度去说如何技术布道，更从管理，甚至心理学的角度去教大
-        
-      
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="布道之道" scheme="http://yoursite.com/tags/%E5%B8%83%E9%81%93%E4%B9%8B%E9%81%93/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
