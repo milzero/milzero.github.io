@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="使用fastapi快速实现接口">
+
+
+
+
+  <meta name="keywords" content="Restful,Python,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/06/09/fastapi/">
+
+
+<meta name="description" content="安装fastapi只支持Python3.6+ , 所以需要机器上的Python版本至少3.6+ 12pip3 install fastapipip3 install uvicorn  创建应用123from fastapi import FastAPIapp = FastAPI()  很简单，一行代码就成，和flask很像，同时很多初始话参数可以通过构造函数传入 12345678910111213">
+<meta name="keywords" content="Restful,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用fastapi快速实现接口">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/fastapi/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装fastapi只支持Python3.6+ , 所以需要机器上的Python版本至少3.6+ 12pip3 install fastapipip3 install uvicorn  创建应用123from fastapi import FastAPIapp = FastAPI()  很简单，一行代码就成，和flask很像，同时很多初始话参数可以通过构造函数传入 12345678910111213">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-12T16:03:57.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用fastapi快速实现接口">
+<meta name="twitter:description" content="安装fastapi只支持Python3.6+ , 所以需要机器上的Python版本至少3.6+ 12pip3 install fastapipip3 install uvicorn  创建应用123from fastapi import FastAPIapp = FastAPI()  很简单，一行代码就成，和flask很像，同时很多初始话参数可以通过构造函数传入 12345678910111213">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 使用fastapi快速实现接口 - Hexo </title>
+  <link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          使用fastapi快速实现接口
+        
+      </h1>
+
+      <time class="post-time">
+          Jun 09 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>fastapi只支持Python3.6+ , 所以需要机器上的Python版本至少3.6+</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 install fastapi</span><br><span class="line">pip3 install uvicorn</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br></pre></td></tr></table></figure>
+
+<p>很简单，一行代码就成，和flask很像，同时很多初始话参数可以通过构造函数传入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        self,</span></span></span><br><span class="line"><span class="function"><span class="params">        *,</span></span></span><br><span class="line"><span class="function"><span class="params">        debug: bool = False,</span></span></span><br><span class="line"><span class="function"><span class="params">        routes: List[BaseRoute] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        title: str = <span class="string">"FastAPI"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        description: str = <span class="string">""</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        version: str = <span class="string">"0.1.0"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        openapi_url: Optional[str] = <span class="string">"/openapi.json"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        openapi_tags: Optional[List[Dict[str, Any]]] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        servers: Optional[List[Dict[str, Union[str, Any]]]] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        default_response_class: Type[Response] = JSONResponse,</span></span></span><br><span class="line"><span class="function"><span class="params">        docs_url: Optional[str] = <span class="string">"/docs"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        redoc_url: Optional[str] = <span class="string">"/redoc"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        swagger_ui_oauth2_redirect_url: Optional[str] = <span class="string">"/docs/oauth2-redirect"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        swagger_ui_init_oauth: Optional[dict] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        middleware: Sequence[Middleware] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        exception_handlers: Dict[Union[int, Type[Exception]], Callable] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        on_startup: Sequence[Callable] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        on_shutdown: Sequence[Callable] = None,</span></span></span><br><span class="line"><span class="function"><span class="params">        openapi_prefix: str = <span class="string">""</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        root_path: str = <span class="string">""</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        **extra: Dict[str, Any],</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span> -&gt; <span class="keyword">None</span>:</span></span><br></pre></td></tr></table></figure>
+
+<p>支持这些参数，看名字就能很简单的知道这些参数具体的作用。</p>
+<h1 id="处理请求"><a href="#处理请求" class="headerlink" title="处理请求"></a>处理请求</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="string">'app'</span>: user_id&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和flask一样，fastapi用装饰器处理请求，get,post这些分别对应HTTP的GET，POST方法，方法的参数表示请求的路径。</p>
+<h1 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get('/name')</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">get_user_name</span><span class="params">(user_id:int = Query<span class="params">(None)</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span>  &#123;<span class="string">'user_id'</span>:user_id , <span class="string">'user_name'</span>: <span class="string">'tom'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="请求模型"><a href="#请求模型" class="headerlink" title="请求模型"></a>请求模型</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, Query</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Item</span><span class="params">(BaseModel)</span>:</span></span><br><span class="line">    name: str</span><br><span class="line">    description: str = <span class="literal">None</span></span><br><span class="line">    price: float</span><br><span class="line">    tax: float = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post('/user/upload')</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">upload</span><span class="params">(* , item: Item)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Restful/">Restful</a>
+		  
+			<a href="/tags/Python/">Python</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/07/09/driving-technical-change/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">布道之道读书笔记</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/02/09/webrtc-nack/">
+        <span class="next-text nav-default">WebRTC 中的Nack</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

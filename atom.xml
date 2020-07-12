@@ -45,6 +45,35 @@
   </entry>
   
   <entry>
+    <title>使用fastapi快速实现接口</title>
+    <link href="http://yoursite.com/2020/06/09/fastapi/"/>
+    <id>http://yoursite.com/2020/06/09/fastapi/</id>
+    <published>2020-06-09T03:37:02.000Z</published>
+    <updated>2020-07-12T16:03:57.237Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;fastapi只支持Python3.6+ , 所以需要机器上的Python版本至少3.6+&lt;/p&gt;
+&lt;figure
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="Restful" scheme="http://yoursite.com/tags/Restful/"/>
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WebRTC 中的Nack</title>
     <link href="http://yoursite.com/2020/02/09/webrtc-nack/"/>
     <id>http://yoursite.com/2020/02/09/webrtc-nack/</id>
