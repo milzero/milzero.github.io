@@ -35,16 +35,19 @@
 <link rel="canonical" href="http://yoursite.com/2018/12/12/zookeeper-conection-change/">
 
 
+<meta name="description" content="zk客户端和服务端之间通过一个全局唯一的session_id管理客户端会话，客户端和服务端建立一个长链接，定期发心跳包，若是客户端和服务器之间心跳超时，客户端会抛出CONNECTION_LOSS的异常，需要注意的是，客户端虽然抛出链接丢失的异常，但是zk的服务器还是connected状态，这种情况客户端就同步不到zk中节点的状态。  上面这张图，列出了zk客户端和服务端的链接状态的变化。  zkc">
 <meta name="keywords" content="分布式系统,Zookeeper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zookeeper 链接状态变化">
 <meta property="og:url" content="http://yoursite.com/2018/12/12/zookeeper-conection-change/index.html">
 <meta property="og:site_name" content="三斤瘦">
+<meta property="og:description" content="zk客户端和服务端之间通过一个全局唯一的session_id管理客户端会话，客户端和服务端建立一个长链接，定期发心跳包，若是客户端和服务器之间心跳超时，客户端会抛出CONNECTION_LOSS的异常，需要注意的是，客户端虽然抛出链接丢失的异常，但是zk的服务器还是connected状态，这种情况客户端就同步不到zk中节点的状态。  上面这张图，列出了zk客户端和服务端的链接状态的变化。  zkc">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://zookeeper.apache.org/doc/r3.4.5/images/state_dia.jpg">
-<meta property="og:updated_time" content="2020-07-14T15:54:09.717Z">
+<meta property="og:updated_time" content="2020-07-15T16:36:02.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zookeeper 链接状态变化">
+<meta name="twitter:description" content="zk客户端和服务端之间通过一个全局唯一的session_id管理客户端会话，客户端和服务端建立一个长链接，定期发心跳包，若是客户端和服务器之间心跳超时，客户端会抛出CONNECTION_LOSS的异常，需要注意的是，客户端虽然抛出链接丢失的异常，但是zk的服务器还是connected状态，这种情况客户端就同步不到zk中节点的状态。  上面这张图，列出了zk客户端和服务端的链接状态的变化。  zkc">
 <meta name="twitter:image" content="https://zookeeper.apache.org/doc/r3.4.5/images/state_dia.jpg">
 
 
@@ -139,7 +142,21 @@
 
     
             <div class="post-content">
-            <p><img src="https://zookeeper.apache.org/doc/r3.4.5/images/state_dia.jpg" alt></p>
+            <p>zk客户端和服务端之间通过一个全局唯一的session_id管理客户端会话，客户端和服务端建立一个长链接，定期发心跳包，若是客户端和服务器之间心跳超时，客户端会抛出CONNECTION_LOSS的异常，需要注意的是，客户端虽然抛出链接丢失的异常，但是zk的服务器还是connected状态，这种情况客户端就同步不到zk中节点的状态。</p>
+<p><img src="https://zookeeper.apache.org/doc/r3.4.5/images/state_dia.jpg" alt></p>
+<p>上面这张图，列出了zk客户端和服务端的链接状态的变化。</p>
+<ol>
+<li>zkclient开始链接Zookeeper，zkclient处于connecting状态，zkclient还没有状态，Zookeeper当然就是没有zkclinet的状态</li>
+<li>zkclient连上Zookeeper后，zkclient和Zookeeper处于，CONNETED状态，zkclient会给业务成返CONNECTED状态，不同语言实现的客户端返回方式和名称可能不太一样。Zookeeper会为zkclient分配一个全局唯一的session id,这个id就是之后zkclient生命周期内的唯一表示。</li>
+<li>因为网络问题，或者Zookeeper节点下线，zkclient会抛出一个CONNECT_LOST事件，此时Zookeeper还是处于CONNECTED，而zkclient会尝试链接其他zk节点，注意，这些节点是初始化zkclient传入的链接字符串，不同的zkclient实现链接顺序不一样，一般就是随机或者按链接字符串的，有些客户端会给个接口传入这个超时时间。</li>
+<li>如果在session_timeout 时间内连上Zookpeer，Zookeeper和zkclient都会处于connected状态，各自当无事发生过，这个session_timeout由zkclient和Zookeeper协商，不能小于2<em>tickttime也不能大于20</em>tickttime,例如tickttime配置的1s，session_timeout的上下限就是2s~20s.session_time这个值需要结合业务合理配置，如果设置的太小，就无法消除网络丢包和Zookeeper节点造成的影响，如果设置的太大，当zkclient掉线的时候，那就可能导致数据不一致。</li>
+<li>当zkclient在session_timeout 之后连上Zookeeper，这时候Zookeeper会将zkclient标记SESSION_EXPIRED，zkclient会给业务层抛出一个SESSION_EXPIRED事件，Zookeeper会删除zkclient写入的临时节点和注册的Watcher，业务层需要重新创建一个zkclient实例。</li>
+</ol>
+<p>需要关注两个超时时间</p>
+<ul>
+<li>zkclient链接的超时时间，不能设置的太小，太小的话可能导致session_timeout内也连不上任意一个Zookeeper几点，降低系统的可用性，如果设置的太大，可能会导致一直尝试链接某个节点，知道会话超时。</li>
+<li>会话超时时间，设置的太大，链接丢失时，产生数据不一致，设置的太小，对抗节点丢失和网络异常的能力降低</li>
+</ul>
 
             </div>
           

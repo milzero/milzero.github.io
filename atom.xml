@@ -101,7 +101,7 @@
     <link href="http://yoursite.com/2020/02/09/webrtc-nack/"/>
     <id>http://yoursite.com/2020/02/09/webrtc-nack/</id>
     <published>2020-02-09T15:37:02.000Z</published>
-    <updated>2020-07-12T15:36:44.672Z</updated>
+    <updated>2020-07-15T15:00:03.715Z</updated>
     
     <summary type="html">
     
@@ -118,8 +118,6 @@
       <category term="webrtc" scheme="http://yoursite.com/categories/webrtc/"/>
     
       <category term="流媒体" scheme="http://yoursite.com/categories/webrtc/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
-    
-      <category term="rtp" scheme="http://yoursite.com/categories/webrtc/%E6%B5%81%E5%AA%92%E4%BD%93/rtp/"/>
     
     
       <category term="流媒体" scheme="http://yoursite.com/tags/%E6%B5%81%E5%AA%92%E4%BD%93/"/>
@@ -227,7 +225,7 @@
     <link href="http://yoursite.com/2018/12/12/zookeeper-conection-change/"/>
     <id>http://yoursite.com/2018/12/12/zookeeper-conection-change/</id>
     <published>2018-12-12T09:21:10.000Z</published>
-    <updated>2020-07-14T15:54:09.717Z</updated>
+    <updated>2020-07-15T16:36:02.858Z</updated>
     
     <summary type="html">
     
@@ -235,7 +233,7 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;https://zookeeper.apache.org/doc/r3.4.5/images/state_dia.jpg&quot;
+          &lt;p&gt;zk客户端和服务端之间通过一个全局唯一的session_id管理客户端会话，客户端和服务端建立一个长链接，定期发心跳包，若是客户端和服务器之间心跳超时，客户端会抛出CONNECTION_LOSS的异常，需要注意的是，客户端虽然抛出链接丢失的异常，但是zk的服务器还是conn
         
       
     
